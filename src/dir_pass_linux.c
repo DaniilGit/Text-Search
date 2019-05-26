@@ -35,7 +35,7 @@ int dir_pass_linux(char *path, char *word) {
       strcat(path, "/");
       strcat(path, name_file);
 
-      //сюда добавить функцию
+      file_search(path, word);
     }
     strcpy(path, buffer);
   }
