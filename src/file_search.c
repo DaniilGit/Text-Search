@@ -66,3 +66,35 @@ void file_search(char *path, char *word) {
 
     line++;
     pos = linepos;
+
+    char *linestr = (char *)malloc(sizeof(char) * (lineend - linepos + 2));
+    if (linestr == NULL)
+      print(2, NULL);
+    fseek(file, linepos, SEEK_SET);
+    fread(linestr, lineend - linepos + 1, 1, file);
+    linestr[lineend - linepos + 1] = '\0';
+
+    while (pos <= lineend - wordsize + 1) {
+      fseek(file, pos, SEEK_SET);
+      fread(buffer, wordsize, 1, file);
+      if (compare(wordsize, word, buffer)) {
+        if (once) {
+          once = 0;
+          fprintf(logfile, "%i)The path to the file: %s\nWord:%s\n",
+                  filecounter, path, word);
+          filecounter++;
+        }
+        fprintf(logfile, "String number(%i): %i\nString: %s\n", wordcounter,
+                line, linestr);
+        pos += wordsize;
+        wordcounter++;
+        g_wordcounter++;
+      }
+      fseek(file, pos, SEEK_SET);
+      fread(buffer, 1, 1, file);
+      }
+    }
+    linepos = lineend + 2;
+    free(linestr);
+  }
+}
