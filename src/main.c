@@ -51,5 +51,10 @@ int main(int argc, char **argv) {
 
   fclose(logfile);
 
+  if (filecounter == 1)
+    print(5, NULL);
+  else
+    print(6, logpath);
+
   return 0;
 }
