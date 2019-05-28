@@ -92,6 +92,9 @@ void file_search(char *path, char *word) {
       }
       fseek(file, pos, SEEK_SET);
       fread(buffer, 1, 1, file);
+      while (pos <= lineend - wordsize + 1 && !qch(buffer[0])) {
+        pos++;
+        fread(buffer, 1, 1, file);
       }
     }
     linepos = lineend + 2;
