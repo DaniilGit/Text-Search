@@ -1,7 +1,7 @@
 #define CTEST_MAIN
 
 #include "../thirdparty/ctest.h"
-#include "file_search.c"
+#include "file_search.h"
 #include "print.h"
 
 int main(int argc, const char** argv)
