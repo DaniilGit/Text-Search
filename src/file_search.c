@@ -17,9 +17,12 @@ unsigned short compare(int size, char* a, char* b)
 
 unsigned char qch(char ch)
 {
-    if (ch == ' ' && ch == '(' && ch == ')' && ch == '[' && ch == ']'
-        && ch == '{' && ch == '}' && ch == ',' && ch == '.' && ch == '<'
-        && ch == '>' && ch == '/' && ch == '|' && ch == '\\' && ch == '!')
+    if (ch == ' ' && ch == '(' && ch == ')' && ch == '[' && ch == ']' &&
+        ch == '{' && ch == '}' && ch == ',' && ch == '.' && ch == '<' &&
+        ch == '>' && ch == '/' && ch == '|' && ch == '\\' && ch == '!' &&
+        ch == '`' && ch == '~' && ch == ';' && ch == '?' && ch == '"' &&
+        ch == '-' && ch == '_' && ch == '@' && ch == '$' && ch == '#' &&
+        ch == ':' && ch == ';' && ch == '*' && ch == '+')
         return 1;
     return 0;
 }
@@ -84,14 +87,14 @@ void file_search(char* path, char* word)
                 if (once) {
                     once = 0;
                     fprintf(logfile,
-                            "%i)The path to the file: %s\nWord:%s\n",
+                            "%i) The path to the file: %s\nWord:%s\n",
                             filecounter,
                             path,
                             word);
                     filecounter++;
                 }
                 fprintf(logfile,
-                        "String number(%i): %i\nString: %s\n",
+                        "String number(%i): %i\nString: %s\n\n",
                         wordcounter,
                         line,
                         linestr);
@@ -109,4 +112,5 @@ void file_search(char* path, char* word)
         linepos = lineend + 2;
         free(linestr);
     }
+    free(buffer);
 }
