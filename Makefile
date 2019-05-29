@@ -26,8 +26,8 @@ $(PATHBUILDSRC)dir_pass_linux.o: $(PATHSRC)dir_pass_linux.c
 
 test: bin build build/test $(PATHBIN)project_test
 
-$(PATHBIN)project_test: $(PATHBUILDTEST)main.o $(PATHBUILDTEST)test.o $(PATHBUILDTEST)dir_pass.o $(PATHBUILDTEST)print.o $(PATHBUILDTEST)file_search.o
-	gcc -Wall $(PATHBUILDTEST)main.o $(PATHBUILDTEST)test.o $(PATHBUILDTEST)dir_pass.o $(PATHBUILDTEST)print.o $(PATHBUILDTEST)file_search.o -o $(PATHBIN)project_test -lm
+$(PATHBIN)project_test: $(PATHBUILDTEST)main.o $(PATHBUILDTEST)test.o $(PATHBUILDTEST)print.o $(PATHBUILDTEST)file_search.o
+	gcc -Wall $(PATHBUILDTEST)main.o $(PATHBUILDTEST)test.o $(PATHBUILDTEST)print.o $(PATHBUILDTEST)file_search.o -o $(PATHBIN)project_test -lm
 
 $(PATHBUILDTEST)test.o: $(PATHTEST)test.c
 	gcc -Wall -Werror -c -I thirdparty -I src $(PATHTEST)test.c -o $(PATHBUILDTEST)test.o
@@ -36,10 +36,7 @@ $(PATHBUILDTEST)main.o: $(PATHTEST)main.c
 	gcc -Wall -Werror -c -I thirdparty -I src $(PATHTEST)main.c -o $(PATHBUILDTEST)main.o
 
 $(PATHBUILDTEST)print.o: $(PATHSRC)print.c
-	gcc -Wall -Werror -c -I thirdparty -I src $(PATHSRC)Flip.c -o $(PATHBUILDTEST)Flip.o
-
-$(PATHBUILDTEST)dir_pass.o: $(PATHSRC)dir_pass.c
-	gcc -Wall -Werror -c -I thirdparty -I src $(PATHSRC)ShellSort.c -o $(PATHBUILDTEST)ShellSort.o
+	gcc -Wall -Werror -c -I thirdparty -I src $(PATHSRC)print.c -o $(PATHBUILDTEST)print.o
 
 $(PATHBUILDTEST)file_search.o: $(PATHSRC)file_search.c
 	gcc -Wall -Werror -c -I thirdparty -I src $(PATHSRC)file_search.c -o $(PATHBUILDTEST)file_search.o
