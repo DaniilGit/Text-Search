@@ -27,12 +27,12 @@ unsigned char qch(char ch)
     return 0;
 }
 
-void file_search(char* path, char* word)
+int file_search(char* path, char* word)
 {
     FILE* file;
     if ((file = fopen(path, "r")) == NULL) {
         print(3, path);
-        return;
+        return -1;
     }
 
     fseek(file, 0, SEEK_END);
@@ -43,8 +43,10 @@ void file_search(char* path, char* word)
         wordsize++;
 
     char* buffer = (char*)malloc(sizeof(char) * wordsize);
-    if (buffer == NULL)
+    if (buffer == NULL) {
         print(2, NULL);
+        return -1;
+    }
     int line = 0;
     int linepos = 0;
     int lineend = 0;
@@ -74,8 +76,10 @@ void file_search(char* path, char* word)
         pos = linepos;
 
         char* linestr = (char*)malloc(sizeof(char) * (lineend - linepos + 2));
-        if (linestr == NULL)
+        if (linestr == NULL) {
             print(2, NULL);
+            return -1;
+        }
         fseek(file, linepos, SEEK_SET);
         fread(linestr, lineend - linepos + 1, 1, file);
         linestr[lineend - linepos + 1] = '\0';
@@ -113,4 +117,5 @@ void file_search(char* path, char* word)
         free(linestr);
     }
     free(buffer);
+    return 0;
 }
