@@ -57,5 +57,9 @@ int main(int argc, char** argv)
     else
         print(6, logpath);
 
+    free(word);
+    free(path);
+    free(logpath);
+
     return 0;
 }
