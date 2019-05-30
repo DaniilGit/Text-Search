@@ -4,9 +4,9 @@
 FILE* logfile;
 int g_wordcounter;
 
-void print(int errno, void* ptr)
+void print(int err, void* ptr)
 {
-    switch (errno) {
+    switch (err) {
     case 0: {
         printf("Error write to log file \"%s\".\n", (char*)ptr);
         break;
@@ -32,9 +32,7 @@ void print(int errno, void* ptr)
         break;
     }
     case 6: {
-        printf("The program worked correctly\nFound words: %i\nPath to the "
-               "file "
-               "with the result: %s\n",
+        printf("The program worked correctly\nFound words: %i\nFile with results: %s\n",
                g_wordcounter,
                (char*)ptr);
         return;
