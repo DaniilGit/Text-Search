@@ -32,7 +32,8 @@ void print(int err, void* ptr)
         break;
     }
     case 6: {
-        printf("The program worked correctly\nFound words: %i\nFile with results: %s\n",
+        printf("The program worked correctly\nFound words: %i\nFile with "
+                "results: %s\n",
                g_wordcounter,
                (char*)ptr);
         return;
