@@ -32,3 +32,14 @@ CTEST(file_search, file_search)
 
     ASSERT_EQUAL(expected, result);
 }
+CTEST(Separator_test, file_search)
+{
+    char a[] = "separator";
+    char b[] = "separator";
+    int size = 9;
+    int exp = 1;
+
+    int rl = compare(size, a, b);
+
+    ASSERT_EQUAL(exp, rl);
+}
