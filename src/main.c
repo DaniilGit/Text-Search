@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     g_wordcounter = 0;
     filecounter = 1;
 
-    if (argc < 2)
+    if (argc < 3)
         print(4, NULL);
 
     char* word;
