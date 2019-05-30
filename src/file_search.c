@@ -15,18 +15,6 @@ unsigned short compare(int size, char* a, char* b)
     return 1;
 }
 
-unsigned char qch(char ch)
-{
-    if (ch == ' ' && ch == '(' && ch == ')' && ch == '[' && ch == ']'
-        && ch == '{' && ch == '}' && ch == ',' && ch == '.' && ch == '<'
-        && ch == '>' && ch == '/' && ch == '|' && ch == '\\' && ch == '!'
-        && ch == '`' && ch == '~' && ch == ';' && ch == '?' && ch == '"'
-        && ch == '-' && ch == '_' && ch == '@' && ch == '$' && ch == '#'
-        && ch == ':' && ch == ';' && ch == '*' && ch == '+')
-        return 1;
-    return 0;
-}
-
 int file_search(char* path, char* word)
 {
     FILE* file;
@@ -106,12 +94,9 @@ int file_search(char* path, char* word)
                 wordcounter++;
                 g_wordcounter++;
             }
+            pos++;
             fseek(file, pos, SEEK_SET);
             fread(buffer, 1, 1, file);
-            while (pos <= lineend - wordsize + 1 && !qch(buffer[0])) {
-                pos++;
-                fread(buffer, 1, 1, file);
-            }
         }
         linepos = lineend + 2;
         free(linestr);
