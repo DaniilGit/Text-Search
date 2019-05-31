@@ -95,8 +95,6 @@ int file_search(char* path, char* word)
                 g_wordcounter++;
             }
             pos++;
-            fseek(file, pos, SEEK_SET);
-            fread(buffer, 1, 1, file);
         }
         linepos = lineend + 2;
         free(linestr);
