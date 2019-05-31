@@ -44,6 +44,7 @@ int file_search(char* path, char* word)
     unsigned short once = 1;
     unsigned short eof = 0;
     while (!eof) {
+        line++;
         fseek(file, linepos, SEEK_SET);
         for (int i;;) {
             i = ftell(file);
@@ -60,7 +61,6 @@ int file_search(char* path, char* word)
             }
         }
 
-        line++;
         pos = linepos;
 
         char* linestr = (char*)malloc(sizeof(char) * (lineend - linepos + 2));
