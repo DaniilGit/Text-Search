@@ -4,12 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-FILE* logfile;
+//FILE* logfile;
 int filecounter;
 int g_wordcounter;
 
 CTEST(file_search, file_search)
 {
+    FILE* logfile;
     filecounter = 1;
     g_wordcounter = 0;
     FILE* test;
@@ -31,6 +32,8 @@ CTEST(file_search, file_search)
     fclose(logfile);
 
     ASSERT_EQUAL(expected, result);
+    
+    remove("result.txt");
 }
 CTEST(Separator_test, file_search)
 {
